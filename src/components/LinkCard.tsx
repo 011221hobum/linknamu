@@ -26,14 +26,16 @@ function Icon({ icon }: { icon: LinkIcon }) {
 
 type Props = {
   link: LinkItem;
-  initialCount: number;
+  serverCount: number;
 };
 
-export default function LinkCard({ link, initialCount }: Props) {
-  const [count, setCount] = useState(initialCount);
+export default function LinkCard({ link, serverCount }: Props) {
+  // 서버 값이 늦게 도착해도 이 화면에서 누른 횟수는 사라지지 않도록 따로 더합니다.
+  const [added, setAdded] = useState(0);
+  const count = serverCount + added;
 
   function handleClick() {
-    setCount((prev) => prev + 1);
+    setAdded((prev) => prev + 1);
     // 새 탭으로 이동해도 요청이 끊기지 않도록 keepalive를 사용합니다.
     fetch("/api/clicks", {
       method: "POST",
@@ -58,7 +60,7 @@ export default function LinkCard({ link, initialCount }: Props) {
         {link.icon && <Icon icon={link.icon} />}
         {link.title}
       </span>
-      <span className="text-xs tabular-nums text-stone-400 dark:text-stone-500">{count.toLocaleString()} 클릭</span>
+      <span className="text-xs tabular-nums text-stone-400 dark:text-stone-500">{count.toLocaleString()}회</span>
     </a>
   );
 }

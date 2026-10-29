@@ -1,14 +1,9 @@
-import LinkCard from "@/components/LinkCard";
+import LinkList from "@/components/LinkList";
 import ProfileHeader from "@/components/ProfileHeader";
 import ThemeToggle from "@/components/ThemeToggle";
 import { profile } from "@/data/profile";
-import { getClickCounts } from "@/lib/mongodb";
 
-export const dynamic = "force-dynamic";
-
-export default async function Home() {
-  const counts = await getClickCounts();
-
+export default function Home() {
   return (
     <main className="relative mx-auto flex min-h-screen w-full max-w-md flex-col px-7 pb-16 pt-20 sm:px-8 sm:pt-24">
       {/* 유리 카드 뒤로 비쳐 보일 은은한 색 번짐 */}
@@ -22,12 +17,8 @@ export default async function Home() {
       {/* 상단: 원형 프로필 사진, 이름, 한 줄 소개 */}
       <ProfileHeader name={profile.name} bio={profile.bio} image={profile.image} />
 
-      {/* 하단: 링크 카드 목록 (세로 배치) */}
-      <nav className="mt-12 flex flex-col gap-4">
-        {profile.links.map((link) => (
-          <LinkCard key={link.id} link={link} initialCount={counts[link.id] ?? 0} />
-        ))}
-      </nav>
+      {/* 하단: 링크 카드 목록 (세로 배치). 클릭 수는 브라우저에서 받아 옵니다. */}
+      <LinkList links={profile.links} />
     </main>
   );
 }
