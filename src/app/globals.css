@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 크림색 -> 연한 살구색 그라데이션. 다크모드는 같은 톤의 따뜻한 짙은 갈색 */
 body {
-  @apply bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100;
-  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+  @apply min-h-screen text-stone-800 dark:text-stone-100;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  background: linear-gradient(160deg, #fdf8f1 0%, #fbeee2 45%, #f7d9c4 100%) fixed;
+}
+
+.dark body {
+  background: linear-gradient(160deg, #1c1714 0%, #241b16 50%, #2e211a 100%) fixed;
 }

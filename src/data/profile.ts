@@ -1,7 +1,10 @@
+export type LinkIcon = "github" | "naver" | "email";
+
 export type LinkItem = {
   id: string;
   title: string;
   url: string;
+  icon?: LinkIcon;
 };
 
 export type Profile = {
@@ -11,14 +14,13 @@ export type Profile = {
   links: LinkItem[];
 };
 
-// TODO: 아래는 보여 주기용 더미 값입니다. 실제 정보로 바꿔 주세요.
 export const profile: Profile = {
-  name: "김클로",
-  bio: "세계 최강 바이브코더",
-  image: "/profile.svg",
+  name: "곽호범",
+  bio: "AI 시대에 우린 어떻게 일할까",
+  image: "/profile.png",
   links: [
-    { id: "github", title: "GitHub", url: "https://github.com/your-id" },
-    { id: "linkedin", title: "LinkedIn", url: "https://www.linkedin.com/in/your-id" },
-    { id: "blog", title: "Blog", url: "https://your-blog.example.com" },
+    { id: "github", title: "깃허브", url: "https://github.com/011221hobum", icon: "github" },
+    { id: "blog", title: "블로그", url: "https://blog.naver.com/bumbumbum-", icon: "naver" },
+    { id: "email", title: "이메일", url: "mailto:uyop011221@gmail.com", icon: "email" },
   ],
 };

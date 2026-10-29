@@ -12,14 +12,14 @@ export default function ProfileHeader({ name, bio, image }: Props) {
       <Image
         src={image}
         alt={`${name} 프로필 사진`}
-        width={144}
-        height={144}
+        width={150}
+        height={150}
         priority
         unoptimized
-        className="h-36 w-36 rounded-full border-4 border-white object-cover shadow-md dark:border-neutral-800"
+        className="h-[150px] w-[150px] rounded-full object-cover shadow-[0_18px_40px_-12px_rgba(120,72,40,0.35),0_4px_12px_-4px_rgba(120,72,40,0.2)] ring-4 ring-white/80 dark:shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)] dark:ring-white/10"
       />
-      <h1 className="mt-4 text-2xl font-bold">{name}</h1>
-      <p className="mt-1 text-neutral-600 dark:text-neutral-400">{bio}</p>
+      <h1 className="mt-6 text-2xl font-bold tracking-tight">{name}</h1>
+      <p className="mt-2 text-[15px] text-stone-500 dark:text-stone-400">{bio}</p>
     </header>
   );
 }
